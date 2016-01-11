@@ -1,0 +1,52 @@
+
+\documentclass[openany]{book}
+\usepackage{graphicx} % images
+\usepackage{listings} % nice code layout
+\usepackage[usenames]{color} % color
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{graphgray}{gray}{0.7}
+\definecolor{ans}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+% \Verilog{title}{label}{file}
+\newcommand{\Verilog}[3]{
+  \lstset{language=Verilog}
+  \lstset{backgroundcolor=\color{listinggray},rulecolor=\color{blue}}
+  \lstset{linewidth=\textwidth}
+  \lstset{commentstyle=\textit, stringstyle=\upshape,showspaces=false}
+  \lstset{frame=tb, tabsize=2}
+  \lstinputlisting[caption={#1},label={#2}]{#3}
+}
+\renewcommand{\chaptername}{Lab}
+
+
+\title{ELC 3338 Project Book}
+\author{Keith Evan Schubert}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\input{counter}
+%\input{instruction_memory}
+%\input{fetch}
+%\input{branching}
+%\input{alu}
+%\input{multicycle_alu}
+%\input{control}
+
+%midterm
+%\input{pipelining}
+%\input{performance2}
+%\input{forwarding}
+%\input{performance3}
+%\input{cache}
+%\input{performance4}
+
+%\appendix
+%\input{requirements}
+%\input{components}
+
+\end{document} 

@@ -1,7 +1,5 @@
 `include "definitions.vh"
 
-
-
 module mux#(
     parameter SIZE=8)(
     input [SIZE-1:0] Ain,

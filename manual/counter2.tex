@@ -1,5 +1,46 @@
+\chapter{Program Counter}
 
+As mentioned in the last lab, the program counter is a register that is one word in length.  It holds the address in memory of the next instruction to be fetched and executed.  A typical program counter has to deal with a variety of situations that could change the program counter.  
+\begin{enumerate}
+\item The program counter should advance to the next address (add one word offset) each cycle.
+\item If the conditions of a conditional branch are met, the destination of the branch is the next instruction.
+\item If an uncondtitional branch or jump occurs, the destination is the branch's destination.
+\item If an interrupt or error occurs, then the next value of the program counter should be the appropriate handler.
+\end{enumerate}
+The most typical is the computer must fetch instructions in sequential order.
 
 \section{Incrementer}
 
-We will build an incrementer, by making a simple adder, then we just have to pass it a 1.
+We will build an incrementer, by making a simple adder, then we just have to pass it a 1.  Later in our computer we will need another adder, so this will let us re-use the code.  We pass it a 1 because our memory will be word addressable.  Word addressable means the smallest unit of memory that has its own address is a word.  Most machines are byte addressable, because one ASCII character (a char in c/c++) is a byte.  For a 32 bit word like we are using, that would mean $32/8=4$ bytes to a word or each instruction would be 4 addresses later.  The book follows this convention so it will have +4 when it increments its program counter.
+
+An adder is very simple in Verilog, see listing~\ref{code:adder}.  We start by pulling in our definitions so we have our word size.  We then declare our ports, which in this case I made all wires as I want to show you another way to define a unit, beside an always thread.  There are two inputs (the two numbers to be added) and one output (the result).   All the ports are size word because they hold integers.  The actual definition is then one line.  Assign means to take a command and make it permanently define the value of a wire.  It can only be to a wire (not a reg) as it must continuously assign a value, and regs cannot be continuously driven.  We then just give the simple code that the output is the sum of the two inputs, just like in C or an always thread.  That is it.
+
+\Verilog{Verilog code to make an adder.}{code:adder}{../code/adder.v}
+
+In this lab you will make your own testbench.  The easiest way to do this is to use ISE's built in testbench generator.  
+\begin{enumerate}
+\item Add a new source.  There are several ways to do this.  You can right click on the FPGA in the source window (upper left window) and select add a new source, or go to the project menu and select add a new source.
+\item When the dialog comes up, select Verilog testbench, give it a name and verify the path is where you want it.
+\item In the next dialog window it will ask you which module to test, and select adder (assuming you have already included the adder, if not do so and repeat).
+\item Finish.
+\end{enumerate}
+It will make a test bench for you, create reg's for the inputs to the UUT and wires for the outputs.  It also instantiates the module as UUT, and creates an initial thread to do the stimulus.  You can now add whatever you feel is a good test for the adder. Do some easy to verify checks then some that will test carry and rolling over.  What else do you think you should you check?
+
+\section{Input Selection via Mux}
+
+We will need to be able to choose between normal advancing (sequential stepping) and branching (loops, if statements, etc.).  We will use a multiplexor (mux) to do this.  A mux is a simple device that connects one of the inputs to the outputs based on how the selector is set.  If the selector is 0 then input 0 is connected to the output, and if the selector is 1 then input 1 is connected to the output.  One interesting addition in this block of code is the addition of a size parameter.  Parameters are passed before the normal ports and are used to configure the code to meet a requirement at the time of construction.  Note parameters cannot change later.  The $=8$ defines the default value if nothing is specified.  In this case we are using parameters to set the number of wires that compose the inputs and output.  In our problem we will need some muxes to switch entire words (32 bits), but later we will also need to switch register addresses (5 bits).  Rather than write two registers, we will make one and then use the parameter to change the size when they are declared.
+
+\Verilog{Verilog code to make a mux.}{code:mux}{../code/mux.v}
+
+Create a testbench for the mux like you did for the adder.  Note the parameter is not used, and it set the inputs and outputs to be the default of 8.  We are going to change this to test it as a 5 bit mux.  Find the line that starts \verb1mux UUT(...1 and change it to be \verb1mux#(5) UUT(...1  You can also do the dot notation as was done for the ports, but there are usually so few paramters you don't need to.  Make sure you change the size of the regs and the wire that are sent to the UUT from 7:0 to 4:0.  Now come up with good values to test your mux so you are confident it works.  Ask yourself, what could go wrong, and how can I test it?
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Write a testbench for the adder in Listing~\ref{code:adder}.
+\item Write a testbench for the mux in Listing~\ref{code:mux}.
+\item Run a simulation and generate a timing diagram for each.
+\item  Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file.
+\item Upload the pdf and all the Verilog files to the course LMS.
+\end{enumerate} 

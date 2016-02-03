@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 `define CYCLE 10
 `define WORD  32
+`define ZERO `WORD'b0
 `define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibD.data"
 `define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibI.data"
 `define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibR.data"

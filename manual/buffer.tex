@@ -1,0 +1,17 @@
+\chapter{Introduction}
+
+In our last lab, you built the first stage of our pipeline, Fetch.  When you did you might have noticed that something odd happened.  You might have noticed that the output of your instruction memory lagged by one cycle from the program counter.  This is because they both are timed on the same edge of the clock.  To handle this we we are going to need to put in a delay.  We also want to buffer our outputs to ensure they stay constant through the entire cycle, which will allow us to calculate the new values, while allowing the next stage to operate off a finalized value.  Consider the code in Listing~\ref{code:bufferifid}.  It illustrates the idea of a delay in updating.
+
+\Verilog{Verilog code to build a buffer.}{code:bufferifid}{../code/buffer_ifid.v}
+
+
+
+\section{Your Assignment}
+
+You are to:
+\begin{enumerate}
+\item Write a testbench for the buffer, run a simulation and generate a timing diagram.
+\item Integrate the buffer into iFetch, add the delay to your instruction memory, and re-run your simulation to verify it works.
+\item  Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file.
+\item Upload the pdf and all the Verilog files to the course LMS.
+\end{enumerate} 

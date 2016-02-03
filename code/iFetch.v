@@ -24,8 +24,8 @@ module iFetch#(parameter STEP=32'd1, SIZE=1024)(
     register myPC(
     .clk(),
     .reset(),
-    .in(),
-    .out()
+    .D(),
+    .Q()
     );
     
     adder incrementer(

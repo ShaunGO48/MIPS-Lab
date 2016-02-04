@@ -3,8 +3,8 @@
 module buffer_ifid#(parameter DELAY=0)(
     input clk,
     input reset,
-    input reg[`WORD-1:0] nPC_if,
-    input reg[`WORD-1:0] IR_if,
+    input [`WORD-1:0] nPC_if,
+    input [`WORD-1:0] IR_if,
     output reg[`WORD-1:0] nPC_id=`ZERO,
     output reg[`WORD-1:0] IR_id=`ZERO
     );
@@ -12,7 +12,7 @@ module buffer_ifid#(parameter DELAY=0)(
     always @(negedge(clk), posedge(reset))
     begin
       #DELAY;
-      if reset
+      if (reset)
       begin
         nPC_id<=`ZERO;
         IR_id<=`ZERO;

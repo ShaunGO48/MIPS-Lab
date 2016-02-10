@@ -18,6 +18,7 @@
   \lstinputlisting[caption={#1},label={#2}]{#3}
 }
 \renewcommand{\chaptername}{Lab}
+\newcommand{\WrapBarrier}{$\quad$\vspace*{-.225in}}
 
 
 \title{ELC 3338 Project Book}
@@ -34,19 +35,17 @@
 \input{counter2}
 \input{instruction_memory}
 \input{buffer}
-%\input{fetch}
-%\input{branching}
-%\input{alu}
-%\input{multicycle_alu}
-%\input{control}
+\input{control}%and SE
+\input{regfile}
+\input{decode}%and buffer
 
 %midterm
-%\input{pipelining}
-%\input{performance2}
-%\input{forwarding}
-%\input{performance3}
-%\input{cache}
-%\input{performance4}
+%\input{alu}%mux, alucontrol, alu
+%\input{execute}%add, mux, buffer
+%\input{mem}%and, dmem, buf
+%\input{wb}% and pipeline
+%\input{forwarding}%
+%\input{performance}% 
 
 %\appendix
 %\input{requirements}

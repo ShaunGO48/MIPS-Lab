@@ -1,0 +1,41 @@
+\chapter{Wrapping up}
+
+As before, many will need time to debug.  Make sure you methodically try to break down errors.  If you are having a problem be sure to have me or a lab assistant help you with the code.  Don't keep quite, a different set of eyes is invaluable to solving a problem.
+
+\section{Performance of Forwarding}
+If you finished both the pipeline and forwarding then you can do one more addition for extra credit, and squeeze out every last bit of digital fun before the semester tragically must end.  You must do forwarding first, so if you just finished the pipeline in this last lab then please go to the previous one and do forwarding if you want extra credit.  Forwarding is needed to test the performance.  On the non-pipelined system each command must finish before the next can start.  On the pipelined system this is not so.  You are going to assess performance by calculating the speedup of your system with forwarding.
+\begin{enumerate}
+\item Run a snipet of code that has a loop on your original pipeline with all the no-ops intact.  Verify the solution.  Take the time that the final answer is calculated and call it $T_{old}$.
+\item Run the same snipet of code on your forwarding pipeline with the no-ops between RType commands removed.  Verify the solution.  Take the time that the final answer is calculated and call it $T_{new}$.
+\item Calculate the speedup by $S=\frac{T_{old}}{T_{new}}$.
+\item Repeat this for the looping the following number of times: 1, 2, 4, 8, 16, 32, 64.  Plot the speedup versus number of times you looped.  Explain what you see.
+\end{enumerate}
+If you finish, you have entered the top 1\% of all time!  Superb job!
+
+\section{Your Assignment}
+
+If you haven't already, you are to:
+\begin{enumerate}
+\item Finish your pipeline if not done.
+\item Each partner should convert a snipet of code, run it, and verify the solution.
+\item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file.
+\item Upload the pdf and all the Verilog files to the course LMS in the last labs space.
+\end{enumerate}
+
+\noindent
+For extra credit you can:
+\begin{enumerate}
+\item Add forwarding, then run a simulation and generate a timing diagram to verify.
+\item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file as `LabForwarding.pdf'.
+\item Upload the pdf and a zip of all the Verilog files for forwarding (to keep the separate) to the course LMS.
+\end{enumerate}
+
+\noindent
+For more extra credit you can:
+\begin{enumerate}
+\item Do a perfomance tests on your pipeline with and without forwarding as described above.
+\item Write up a lab report in \LaTeX\ following the lab format in \verb1LabN.tex1 and generate a pdf file as `LabPerformance.pdf'.
+\item Upload the pdf and the test files you used to the course LMS.  I should have your verilog from earlier.  If you had to change anything make a zip of the entire pipeline so I don't have to piecemeal it.
+\end{enumerate}
+
+If you are done and don't want to do more, then don't upload anything so I know there is nothing to grade.  The last lab is extra credit. 

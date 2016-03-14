@@ -1,16 +1,12 @@
 `timescale 1ns / 1ps
 `define CYCLE 10
+`define DELAY `CYCLE/8
 `define WORD  32
 `define ZERO `WORD'b0
-`define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibD.data"
-`define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibI.data"
-`define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/fibR.data"
-//`define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumD.data"
-//`define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumI.data"
-//`define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/testfiles/sumR.data"
-//`define DMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/dmem_sample.list"
-//`define IMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/imem_sample.list"
-//`define RMEMFILE  "C:/Users/schubertk/Documents/Baylor/classes/3338/Project/verilog/Keith/dmem_sample.list"
+`define ONE `WORD'b1
+`define DMEMFILE  "C:/Users/schubertk/Documents/GitHub/MIPS-Lab/testfiles/sumD.data"
+`define IMEMFILE  "C:/Users/schubertk/Documents/GitHub/MIPS-Lab/testfiles/sumI.data"
+`define RMEMFILE  "C:/Users/schubertk/Documents/GitHub/MIPS-Lab/testfiles/sumR.data"
 
 `define RTYPE 6'b000000
 `define LW    6'b100011

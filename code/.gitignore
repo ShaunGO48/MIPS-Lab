@@ -2,6 +2,7 @@
 
 !*.v
 !*.vh
+!*.wcfg
 
 !0_common
 !1_fetch
